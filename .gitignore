@@ -9,6 +9,7 @@ server/node_modules
 server/uploads
 server/.env
 Client/.env
+server/db
 
 /.pnp
 .pnp.js

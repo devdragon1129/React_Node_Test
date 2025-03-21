@@ -12,8 +12,6 @@ import {
   Box,
   Text,
 } from "@chakra-ui/react";
-// Assets
-// Custom components
 import { ViewIcon } from "@chakra-ui/icons";
 import Card from "components/card/Card";
 import MiniStatistics from "components/card/MiniStatistics";
@@ -33,7 +31,6 @@ import Spinner from 'components/spinner/Spinner';
 import { useSelector } from "react-redux";
 
 export default function UserReports() {
-  // Chakra Color Mode
   const brandColor = useColorModeValue("brand.500", "white");
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
   const user = JSON.parse(localStorage.getItem("user"));
@@ -121,7 +118,7 @@ export default function UserReports() {
   const navigateTo = {
     Lead: '/lead',
     Contact: '/contacts',
-    Meeting: '/metting',
+    Meeting: '/meeting',
     Call: '/phone-call',
     Task: '/task',
     Email: '/email',
@@ -333,7 +330,6 @@ export default function UserReports() {
           </Grid>
           {taskStatus && taskStatus.length > 0 && taskStatus?.map((item, i) => (
             <Box my={1.5} key={i}>
-              {/* <Flex justifyContent={"space-between"} cursor={'pointer'} onClick={() => navigate('/task', { state: item.status })} alignItems={"center"} padding={4} backgroundColor={"#0b0b0b17"} borderRadius={"10px"}> */}
               <Flex justifyContent={"space-between"} cursor={'pointer'} alignItems={"center"} padding={4} backgroundColor={"#0b0b0b17"} borderRadius={"10px"}>
                 <Flex alignItems={"center"}>
                   <Box height={"18px"} width={"18px"} lineHeight={"18px"} textAlign={"center"} border={`1px solid ${item.color}`} display={"flex"} justifyContent={"center"} alignItems={"center"} borderRadius={"50%"} margin={"0 auto"} >

@@ -23,7 +23,6 @@ const CommonCheckTable = (props) => {
         title,
         columnData,
         size,
-        // dataColumn,
         setSearchedDataOut,
         state,
         allData,
@@ -31,8 +30,6 @@ const CommonCheckTable = (props) => {
         deleteMany,
         tableCustomFields,
         access,
-        // selectedColumns,
-        // setSelectedColumns,
         onOpen,
         setDelete,
         selectedValues,
@@ -64,13 +61,21 @@ const CommonCheckTable = (props) => {
     const searchedDataOut = useSelector((state) => state?.advanceSearchData?.searchResult)
     const searchValue = useSelector((state) => state?.advanceSearchData?.searchValue)
     const getTagValues = useSelector((state) => state?.advanceSearchData?.getTagValues)
-    const data = useMemo(() => (AdvanceSearch ? searchDisplay : displaySearchData) ? (AdvanceSearch ? searchedDataOut : searchedData) : allData, [searchDisplay, displaySearchData, AdvanceSearch, searchedDataOut, searchedData, allData]);
+    const data = useMemo(() => {
+        let finalData = [];
+        if (AdvanceSearch) {
+          finalData = searchDisplay ? searchedDataOut : allData;
+        } else {
+          finalData = displaySearchData ? searchedData : allData;
+        }
+        return Array.isArray(finalData) ? finalData : [];
+    }, [searchDisplay, displaySearchData, AdvanceSearch, searchedDataOut, searchedData, allData]);
+      
 
     const [manageColumnsModel, setManageColumnsModel] = useState(false);
     const [csvColumns, setCsvColumns] = useState([]);
     const [searchbox, setSearchbox] = useState('');
     const [advaceSearch, setAdvaceSearch] = useState(false);
-    // const [column, setColumn] = useState('');
     const [gopageValue, setGopageValue] = useState();
 
     const dispatch = useDispatch();
